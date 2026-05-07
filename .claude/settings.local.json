@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:medium.com)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "WebFetch(domain:www.uistyleguide.com)",
+      "WebSearch",
+      "Bash(git --version)"
+    ]
+  }
+}

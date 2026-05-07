@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JLPT N1 模擬練習</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Hero header (full width gradient) -->
+  <header class="header">
+    <h1>
+      <span class="h1-top">JLPT N1</span>
+      <span class="h1-bottom">模擬練習</span>
+    </h1>
+    <p>廣東話解說 · 智能複習系統 · 7月1日加油！</p>
+  </header>
+
+  <!-- Content wrapper -->
+  <div class="app">
+
+    <!-- Stats Bar -->
+    <div class="stats-bar" id="stats-bar">
+      <div class="stat-chip" id="chip-total">📊 總計: 0問</div>
+      <div class="stat-chip correct" id="chip-correct">✓ 正答: 0</div>
+      <div class="stat-chip wrong" id="chip-wrong">✗ 錯誤: 0</div>
+      <div class="stat-chip rate" id="chip-rate">正答率: —</div>
+      <button class="reset-btn" onclick="confirmReset()">🗑 記錄リセット</button>
+    </div>
+
+    <!-- Mode Tabs -->
+    <div class="tabs">
+      <button class="tab active" id="tab-kanji"   onclick="switchMode('kanji')">📖 漢字</button>
+      <button class="tab"        id="tab-vocab"   onclick="switchMode('vocab')">📚 語彙</button>
+      <button class="tab"        id="tab-grammar" onclick="switchMode('grammar')">📝 文法</button>
+      <button class="tab"        id="tab-context" onclick="switchMode('context')">✏️ 文脈</button>
+    </div>
+    <div class="mode-desc" id="mode-desc">問題１：漢字嘅正確讀法（N1必考）</div>
+
+    <!-- Quiz Area -->
+    <div id="quiz-area">
+      <div class="quiz-card">
+        <div class="progress-wrap">
+          <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+          <span class="prog-label" id="prog-label">1/10</span>
+        </div>
+
+        <!-- Queue indicator -->
+        <div class="queue-badges" id="queue-badges"></div>
+
+        <div class="type-badge-wrap">
+          <span id="type-badge" class="type-badge badge-kanji">漢字</span>
+          <span class="q-id-label" id="q-id-label"></span>
+        </div>
+
+        <div class="question-block">
+          <div class="question-context" id="q-context"></div>
+          <div class="question-main"    id="q-main"></div>
+          <div class="question-sub"     id="q-sub"></div>
+        </div>
+
+        <div class="choices" id="choices"></div>
+        <div class="feedback" id="feedback"></div>
+
+        <!-- Grammar detail panel (shown on wrong answer) -->
+        <div class="grammar-detail" id="grammar-detail"></div>
+
+        <button class="next-btn" id="next-btn" onclick="nextQ()">下一題 →</button>
+      </div>
+
+      <!-- Per-question stat -->
+      <div class="q-history" id="q-history"></div>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-area" class="hidden">
+      <div class="score-card">
+        <div class="score-circle">
+          <div class="score-big" id="r-pct">0%</div>
+          <div class="score-sub">今回の成績</div>
+        </div>
+        <div class="result-stats">
+          <div class="stat-box"><div class="stat-n" id="r-cor">0</div><div class="stat-l">答對</div></div>
+          <div class="stat-box"><div class="stat-n" id="r-wro">0</div><div class="stat-l">答錯</div></div>
+          <div class="stat-box"><div class="stat-n" id="r-tot">0</div><div class="stat-l">題數</div></div>
+        </div>
+        <div class="result-msg" id="r-msg"></div>
+
+        <!-- Wrong answers review -->
+        <div class="wrong-review" id="wrong-review"></div>
+
+        <button class="restart-btn" onclick="restart()">再做一次（優先錯題）</button>
+      </div>
+    </div>
+
+  </div><!-- .app -->
+
+  <script src="data.js"></script>
+  <script src="storage.js"></script>
+  <script src="scheduler.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
